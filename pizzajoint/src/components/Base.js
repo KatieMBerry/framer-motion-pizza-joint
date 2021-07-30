@@ -14,6 +14,10 @@ const containerVariants = {
       type: 'spring',
       delay: 0.5
     }
+  },
+  exit: {
+    x: '-100vw',
+    transition: {ease: 'easeInOut'}
   }
 }
 
@@ -50,12 +54,7 @@ const Base = ({ addBase, pizza }) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-    // initial={{ x: '100vw' }}
-    // animate={{ x: 0 }}
-    // transition={{
-    //   type: 'spring',
-    //   delay: 0.5
-    // }}
+      exit="exit"
     >
 
       <h3>Step 1: Choose Your Base</h3>
@@ -84,14 +83,6 @@ const Base = ({ addBase, pizza }) => {
       {pizza.base && (
         <motion.div className="next"
           variants={nextVariants}
-        // initial="hidden"  ----- Passed down from parent variant props
-        // animate="visible" ----- Passed down from parent variant props
-        // initial={{ x: '-100vw' }}
-        // animate={{ x: 0 }}
-        // transition={{
-        //   type: 'spring',
-        //   stiffness: 120
-        // }}
         >
 
           <Link to="/toppings">
