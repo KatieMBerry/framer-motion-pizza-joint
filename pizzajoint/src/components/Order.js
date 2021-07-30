@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 const containerVariants = {
   hidden: {
     opacity: 0,
-    x: '100vw'
+    x: '100vw',
+    transition: {
+      staggerChildren: 0.5
+    }
   },
   visible: {
     opacity: 1,
@@ -30,22 +33,22 @@ const childVariants = {
 
 const Order = ({ pizza, setShowModal }) => {
   useEffect(() => {
-    setTimeout(() => {
-      setShowModal(true)
-    }, 3000)
-  }, [setShowModal])
+    setTimeout(() => setShowModal(true), 3000);
+  }, [setShowModal]);
 
   return (
     <motion.div className="container order"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      exit="hidden"
     >
 
       <h2>Thank you for your order :)</h2>
      
       <motion.p
-        variants={childVariants}>
+        variants={childVariants}
+        >
         You ordered a {pizza.base} pizza with:
       </motion.p>
 

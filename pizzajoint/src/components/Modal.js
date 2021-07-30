@@ -13,27 +13,28 @@ const modal = {
         opacity: 0
     },
     visible: {
-        y: "200px",
+        y: "250px",
         opacity: 1,
         transition: { delay: 0.5}
     }
 }
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal }) => {
     return (
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence >
             { showModal && (//div represents background of modal
                 <motion.div className="backdrop"
                 variants={backdrop}
                 initial="hidden"
                 animate="visible"
+                exit="hidden"
                 >
                     <motion.div className="modal"
                     variants={modal}
                     >
                     <p>Want to make another pizza?</p>
                     <Link to="/">
-                        <button>Start again</button>
+                        <button>Start Again</button>
                     </Link>
                     </motion.div>
                 </motion.div>
